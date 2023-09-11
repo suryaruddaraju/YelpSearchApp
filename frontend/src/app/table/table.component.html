@@ -1,0 +1,199 @@
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel">Reservation Form</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="resForm" action="return createRes()">
+          <p class="left">Email</p>
+          <input class="inp" style="width: 100%;" type="text" id="email" name="email" formControlName="email" required="true" autofocus>
+          <p class="left">Date</p>
+          <input class="inp" style="width: 100%;" type="date" id="date" name="date" min="{{todate | date:'yyyy-MM-dd'}}" formControlName="date" required>
+          <p class="left">Time</p>
+          <input class="inp" style="width: 100%;" type="time" id="time" name="time" min="10:00" max="17:00" formControlName="time" step="60" required>
+
+          <div class="frmBtns">
+            <input type="submit" id="createResBtn" class="center btn sub" value="submit" data-bs-dismiss="modal" (click)="createRes()">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="subbed && !details" class="top" id='resultsTable'>
+  <div *ngIf="restaurants.length > 0;else noRes">
+
+    <table class='resTbl'>
+      <tr class='tblHeader'>
+        <td class="center">#</td>
+        <td class="center">Image</td>
+        <td class='center sortable'>Business Name</td>
+        <td class='center sortable'>Rating</td>
+        <td class='center sortable'>Distance (miles)</td>
+      </tr>
+      <tbody>
+        <ng-container *ngFor="let rest of restaurants; let i = index">
+          <tr class="tableRow" (click)="rowClicked(rest.id, i)">
+            <td class='center'>{{i + 1}}</td>
+            <td class='center'><img [src]='rest.image_url' alt='img' width='100' height='100'></td>
+            <td class='center'><p class='resName'>{{rest.name}}</p></td>
+            <td class='center'>{{rest.rating}}</td>
+            <td class='center'>{{rest.distance}}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noRes>
+    <div class="noResAvail">
+      <p class="noResP">No results available</p>
+    </div>
+  </ng-template>
+</div>
+<div *ngIf="details">
+  <div class="details topMargin">
+    <button class="backbtn" (click)="backToTable()">&lt;-</button>
+    <h3 class="center">{{currRest.name}}</h3>
+   <mat-tab-group mat-align-tabs="center">
+     <mat-tab label="Business">
+      <table class="center details">
+        <tr>
+          <td>
+            <div class="center">
+              <p class="lbl">Address</p>
+              <ng-container *ngFor="let item of currRest.location.display_address">
+                <p>{{item}}</p>
+              </ng-container>
+            </div>
+          </td>
+
+          <td>
+            <div class="center">
+              <p class="lbl">Category</p>
+              <p>{{ctgy}}</p>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="center">
+              <p class="lbl">Phone</p>
+              <p>{{currRest.display_phone}}</p>
+            </div>
+          </td>
+          <td>
+            <div class="center">
+              <p class="lbl">Price Range</p>
+              <p>{{currRest.price}}</p>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="center">
+              <p class="lbl">Status</p>
+              <ng-container *ngIf="currRest.is_closed;else open">
+                <p class="closed">Closed</p>
+              </ng-container>
+
+              <ng-template #open>
+                <p class="open">Open now</p>
+              </ng-template>
+            </div>
+          </td>
+
+          <td>
+            <div class="center">
+              <p class="lbl">Visit yelp for more</p>
+              <a href="{{currRest.url}}" target="_blank" rel="noopener noreferrer">Business link</a>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="center">
+        <ng-container *ngIf="!hasRes;else noReserv">
+          <!-- <button class="reserve center" (click)="">Reserve Now</button> -->
+          <button type="button" class="reserve center btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Reserve Now</button>
+        </ng-container>
+        <ng-template #noReserv>
+          <button class="cancel center" (click)="cancelRes()">Cancel Reservation</button>
+        </ng-template>
+        <br>
+        Share on:
+        <share-buttons theme="modern-dark"
+          [include]="['facebook', 'twitter']"
+          [showIcon]="true"
+          [showText]="false"
+          url="{{currRest.url}}"
+          description="Check out {{currRest.name}} on Yelp.">
+        </share-buttons>
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <ng-container *ngFor="let img of currRest.photos;let i = index">
+              <ng-container *ngIf="i == 0;else notFirst">
+                <div class="limitSize carousel-item active">
+                  <img src="{{img}}" class="d-block w-100" alt="">
+                </div>
+              </ng-container>
+              <ng-template #notFirst>
+                <div class="limitSize carousel-item">
+                  <img src="{{img}}" class="d-block w-100" alt="">
+                </div>
+              </ng-template>
+            </ng-container>
+            <!-- <div class="limSize carousel-item">
+              <img src="https://s3-media1.fl.yelpcdn.com/bphoto/m2GLJbP2cTi2kTb8L4owjQ/o.jpg" class="d-block w-100" alt="">
+            </div>
+            <div class="limSize carousel-item">
+              <img src="https://s3-media2.fl.yelpcdn.com/bphoto/RQZWf5AdSNRUgRfG-PyjVg/o.jpg" class="d-block w-100" alt="">
+            </div>
+            <div class="limSize carousel-item">
+              <img src="https://s3-media1.fl.yelpcdn.com/bphoto/mQlIDO7RS0axGebQWTmB_w/o.jpg" class="d-block w-100" alt="">
+            </div> -->
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+     </mat-tab>
+
+     <mat-tab label="Map Location">
+      <div class="my-google-map">
+        <google-map [options]="mapOptions">
+           <map-marker [position]="marker.position"></map-marker>
+        </google-map>
+     </div>
+    </mat-tab>
+    <mat-tab label="Reviews">
+      <table class="reviewsTable">
+        <ng-container *ngFor="let user of users; let i = index">
+          <tr>
+            <div class="review">
+              <p style="font-weight: bold;">{{user}}</p>
+              <p>{{rating[i]}}/5</p>
+              <br>
+              <p>{{reviewText[i]}}</p>
+              <br>
+              <p>{{reviewTimes[i]}}</p>
+            </div>
+          </tr>
+        </ng-container>
+      </table>
+    </mat-tab>
+   </mat-tab-group>
+  </div>
+</div>

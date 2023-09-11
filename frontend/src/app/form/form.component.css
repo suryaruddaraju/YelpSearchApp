@@ -1,0 +1,206 @@
+input[type="text"]:focus {
+  border-color: #000000;
+  outline: 0;
+}
+
+label span { color: red; }
+
+.selectCls{
+  height: 50px;
+  border-radius: 5px;
+}
+
+.frmBtns{
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inp{
+  height: 30px;
+}
+
+input{
+  height: 20px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-style: solid;
+  border-width: thin;
+  border-color: #C0C0C0;
+  border-radius: 5px;
+}
+
+.bdy{
+  position: relative;
+  margin: auto;
+  margin-top: 50px;
+  width: 35%;
+  height: 450px;
+  border-style: solid;
+  border-color: #d2d2d2;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.headr {
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  position: relative;
+  top: 25px;
+}
+
+.tt{
+  width: 100%;
+  text-align: center;
+}
+
+.frm{
+  padding: 5%;
+}
+
+.tbl{
+  color: #576FA9;
+  width: 100%;
+}
+
+.location{
+  font-size: 20px;
+}
+
+#category{
+  width: 100%;
+  height: 25px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-style: solid;
+  border-width: thin;
+  border-color: #C0C0C0;
+}
+
+.btn{
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: lighter;
+  margin: 4px 2px;
+}
+
+.sub{
+  background-color: #be464c;
+}
+
+.sub:hover{
+  background-color: #ab3c45;
+}
+
+.clr{
+  background-color: #336adc;
+}
+
+.clr:hover{
+  background-color: #2a5fc4;
+}
+
+#noRes{
+  border-style: solid;
+  border-color: lightgrey;
+  background-color: white;
+  width: 70%;
+  border-width: thin;
+  margin: auto;
+  margin-top: 15px;
+}
+
+.resTbl {
+  font-family: arial, sans-serif;
+  width: 70%;
+  margin: auto;
+  margin-top: 100px;
+  border-width: thin;
+}
+
+.tblHeader{
+  background-color: #4f6fad;
+  font-weight: bold;
+  border-color: white;
+  height: 50px;
+  border-bottom-width: 0px;
+}
+
+.sortable{
+  cursor: pointer;
+}
+
+.tableRow{
+  background-color: white;
+  border-color: grey;
+  margin: auto;
+  border-top-width: 0px;
+}
+
+.center{
+  text-align: center;
+}
+
+.resName:hover{
+  color: grey;
+  cursor: pointer;
+}
+
+#detailsView{
+  width: 55%;
+  margin: auto;
+  margin-top: 50px;
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgrey;
+}
+
+.deetTbl{
+  padding-top: 20px;
+  margin: auto;
+}
+
+.deetsP{
+  margin: 5px;
+}
+
+.deetsCell{
+  padding-bottom: 20px;
+}
+
+.smaller{
+  width: 95%;
+}
+
+.status{
+  width: 80px;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  height: 40px;
+}
+.opened{
+  background-color: green
+}
+
+.closed{
+  background-color: red;
+}
+
+.sub_div {
+  position: absolute;
+  width: 50%;
+  bottom: 10px;
+  border: 3px solid #8AC007;
+}

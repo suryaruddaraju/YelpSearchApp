@@ -1,0 +1,25 @@
+header{
+  position: relative;
+  background: white;
+  padding: 0;
+}
+
+button{
+  color: black;
+  background: none;
+  border-style: none;
+  padding: 10px;
+}
+
+.active{
+  border-style: solid;
+  border-width: 3px;
+  border-color: black;
+  border-radius: 15px;
+}
+
+.container{
+  margin: 0px;
+  display: flex;
+  justify-content: right;
+}

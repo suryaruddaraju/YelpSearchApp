@@ -1,0 +1,53 @@
+<div class="bdy">
+  <div class="headr">
+    <h3 class="tt">Business search</h3>
+  </div>
+
+  <div class="frm">
+    <form [formGroup]="searchForm">
+      <table class="tbl">
+        <tr>
+          <td colspan="2">
+            <label>Keyword <span>*</span></label>
+            <input class="inp" style="width: 100%;"type="text" id="keywd" name="keywd" formControlName="keywd" required>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>Distance(miles)</label><br>
+            <input class="inp" type="text" id="dst" name="dst" formControlName="dst">
+          </td>
+          <td>
+            <label for="dst">Category <span>*</span></label><br>
+            <select class="selectCls" id="category" name="category" form="myform" formControlName="category" required>
+              <option value="all" selected>Default</option>
+              <option value="Arts & Entertainment">Arts & Entertainment</option>
+              <option value="Health & Medical">Health & Medical</option>
+              <option value="Hotels & Travel">Hotels & Travel</option>
+              <option value="Food">Food</option>
+              <option value="Professional Services">Professional Services</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <label>Location <span>*</span></label>
+            <input class="inp" style="width: 100%;"type="text" id="location" name="location" formControlName="locationBox" required><br>
+          </td>
+        </tr>
+        <tr>
+          <td class="location" colspan="2">
+            <input type="checkbox" id="detectLoc" formControlName="locationCheck" form="myform" (click)='locCheck();'> Auto-detect my location
+            <input type="text" id="locValue" formControlName="lat" value="{{lat}}" hidden>
+            <input type="text" id="locValue" formControlName="long" value="{{long}}" hidden>
+          </td>
+        </tr>
+      </table>
+      <br>
+      <div class="frmBtns">
+        <button type="submit" id="subBtn" class="btn sub" (click)="submit()" routerLink="/search">Submit</button>
+        <button id="clrbBtn" class="btn clr" (click)="clearForm()">Clear</button>
+      </div>
+    </form>
+  </div>
+</div>

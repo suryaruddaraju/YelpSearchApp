@@ -1,0 +1,181 @@
+.top{
+  z-index: 10;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-style: none none none none;
+}
+
+tbody tr:nth-child(odd){
+  background-color: rgb(176, 176, 176);
+}
+
+tr:first-child td:first-child { border-top-left-radius: 10px; }
+tr:first-child td:last-child { border-top-right-radius: 10px; }
+
+tr:last-child td:first-child { border-bottom-left-radius: 10px; }
+tr:last-child td:last-child { border-bottom-right-radius: 10px; }
+
+tr:first-child td { border-top-style: solid; }
+tr td:first-child { border-left-style: solid; }
+tr td:last-child { border-right-style: solid; }
+tr:last-child td { border-bottom-style: solid; }
+
+.resTbl {
+  font-family: arial, sans-serif;
+  width: 70%;
+  margin: auto;
+  margin-top: 100px;
+}
+
+.tblHeader{
+  background-color: white;
+  font-weight: bold;
+  height: 50px;
+}
+
+.sortable{
+  cursor: pointer;
+}
+
+.tableRow{
+  background-color: white;
+  margin: auto;
+}
+
+.center{
+  text-align: center;
+}
+
+.resName:hover{
+  color: grey;
+  cursor: pointer;
+}
+
+.noResAvail{
+  /* width: 10%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+mat-tab{
+  background-color: yellow;
+}
+
+.noResP{
+  margin-top: 10px;;
+  padding: 5px;
+  color: red;
+  background-color: white;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: grey;
+}
+
+.topMargin{
+  margin-top: 100px;
+}
+
+.backbtn{
+  background-color: white;
+  border-style: none;
+}
+
+.details{
+  margin: auto;
+  width: 70%;
+  font-size: 20px;
+}
+
+.lbl{
+  font-weight: bold;
+}
+
+.infoTbl{
+  margin: auto;
+  width: 70%;
+}
+
+.closed{
+  color: red;
+}
+
+.open{
+  color: green;
+}
+
+.reserve{
+  background-color: red;
+  color: white;
+  border-style: none;
+  border-radius: 5px;
+}
+
+.cancel{
+  background-color: green;
+  color: white;
+  border-style: none;
+  border-radius: 5px;
+}
+
+.my-google-map{
+  width: 100%;
+  height: 100%;
+}
+
+.review{
+  padding: 10px;
+}
+
+.reviewsTable tr:nth-child(odd){
+  background-color: rgb(176, 176, 176);
+}
+
+.inp{
+  height: 30px;
+}
+
+#reserveModal{
+  width: 30%;
+}
+
+.btn{
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: lighter;
+  margin: 4px 2px;
+}
+
+.sub{
+  background-color: #be464c;
+}
+
+.frmBtns{
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close{
+  background-color: black;
+  float: right;
+}
+
+.left{
+  float: left;
+}
+
+.limitSize{
+  object-fit: cover;
+}

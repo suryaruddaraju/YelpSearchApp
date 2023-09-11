@@ -1,0 +1,60 @@
+.center{
+  align-content: center;
+}
+
+.main{
+  padding: 10px;
+}
+
+.heading{
+  text-align: center;
+}
+
+tr{
+  border-style: solid;
+  border-color: gray;
+  border-width: 1px;
+}
+
+td{
+  vertical-align: middle;
+  text-align: center;
+}
+
+.tbl{
+  font-family: arial, sans-serif;
+  width: 50%;
+  margin: auto;
+}
+
+.noResAvail{
+  /* width: 10%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.noResP{
+  margin-top: 10px;;
+  padding: 5px;
+  color: red;
+  background-color: white;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: grey;
+}
+
+.trash{
+  width: 15px;
+  height: 15px;
+}
+
+tr:hover td {
+  background-color: gray;
+}
+
+tr:first-child:hover td {
+  background-color: white;
+}
+
